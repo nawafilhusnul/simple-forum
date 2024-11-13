@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS post_comments (
+	id BIGINT AUTO_INCREMENT PRIMARY KEY,
+	post_id BIGINT NOT NULL,
+	comment LONGTEXT NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	created_by BIGINT NOT NULL,
+	updated_by BIGINT NOT NULL,
+	deleted_at TIMESTAMP NULL,
+	deleted_by BIGINT NULL,
+	CONSTRAINT fk_post_comments_post_id FOREIGN KEY (post_id) REFERENCES posts(id),
+	CONSTRAINT fk_post_comments_created_by FOREIGN KEY (created_by) REFERENCES users(id)
+);

@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS refresh_tokens (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    refresh_token TEXT NOT NULL,
+    expired_at TIMESTAMP NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by BIGINT NOT NULL,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_by BIGINT NOT NULL,
+    deleted_at TIMESTAMP NULL,
+    deleted_by BIGINT NULL,
+    CONSTRAINT fk_refresh_token_user_id FOREIGN KEY (user_id) REFERENCES users(id)
+);

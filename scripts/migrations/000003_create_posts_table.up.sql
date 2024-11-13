@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS posts (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    content LONGTEXT NOT NULL,
+    hashtags LONGTEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_by BIGINT NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_by BIGINT NOT NULL,
+    deleted_at TIMESTAMP NULL,
+    deleted_by BIGINT NULL,
+    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(id)
+);
